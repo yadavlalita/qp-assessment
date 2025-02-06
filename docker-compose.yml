@@ -1,0 +1,51 @@
+name: grocery
+services:
+  grocery-api:
+    build:
+      context: C:\Users\manje\OneDrive\Documents\WorkSpace\BRODCAST\MongoDB-with-TypeScript-Nodejs-and-Express-main\Grocery
+      dockerfile: Dockerfile
+    container_name: Grocery
+    depends_on:
+      mongodb:
+        condition: service_started
+        required: true
+    environment:
+      MONGO_URI: mongodb://13.232.126.6:27017/grocerydb
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 3000
+        published: "3000"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: bind
+        source: C:\Users\manje\OneDrive\Documents\WorkSpace\BRODCAST\MongoDB-with-TypeScript-Nodejs-and-Express-main\Grocery
+        target: /app
+        bind:
+          create_host_path: true
+  mongodb:
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_USERNAME: root
+    image: mongo:latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 27017
+        published: "27017"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: mongo_data
+        target: /data/db
+        volume: {}
+networks:
+  default:
+    name: grocery_default
+volumes:
+  mongo_data:
+    name: grocery_mongo_data
