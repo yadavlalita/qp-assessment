@@ -1,13 +1,11 @@
-# Todo App
+# Grocery API
 
-This is a simple todo app that allows you to create, read, update, and delete tasks. It is built with Typescript, Node.js, Express.js, and MongoDB for the backend, and React + vite for the frontend.
+This is a simple Grocery API that allows you to create, read, update, and delete tasks. It is built with Typescript, Node.js, Express.js, and MongoDB for the backend.
 
 ## Features
 
-- Add a new task with a title and a description
-- Mark a task as completed or uncompleted
-- Edit or delete an existing task
-- Responsive design that works on different screen sizes
+- Add a new grocery with a name and a price
+- Edit or delete an existing grocery
 
 
 ## Installation
